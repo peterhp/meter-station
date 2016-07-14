@@ -15,3 +15,8 @@ void test_crc16() {
 	assert(0x38CF == crc2);
 }
 
+void test_check_crc16() {
+	byte data1[8] = {0x1, 0x3, 0x1, 0x48, 0x0, 0x2, 0x45, 0xE1};
+	assert(crc16_check(0xFFFF, data1, 6, data1 + 6));
+}
+

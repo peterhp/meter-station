@@ -6,7 +6,10 @@ extern "C" {
 #endif
 
 extern void test_crc16();
+extern void test_check_crc16();
+
 extern void test_pack_modbus();
+extern void test_unpack_modbus();
 
 #ifdef __cplusplus
 }

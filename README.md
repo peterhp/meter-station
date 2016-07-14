@@ -19,10 +19,10 @@ A meter station manages all meter monitors and uploads data to remote servers.
 | -------- | -------- |
 | addr     | 01       |
 | func     | 03       |
-| mid0     | 01       |
-| mid1     | 48       |
-| mid2     | 02       |
-| padd     | 03       |
+| type     | 01       |
+| mid0     | 48       |
+| mid1     | 02       |
+| mid2     | 03       |
 | crc0     | 85       |
 | crc1     | 41       |
 ```
@@ -34,10 +34,10 @@ A meter station manages all meter monitors and uploads data to remote servers.
 | addr     | 01       |
 | func     | 03       |
 | dlen     | 08       |
-| mid0     | 01       |
-| mid1     | 48       |
-| mid2     | 02       |
-| padd     | 03       |
+| type     | 01       |
+| mid0     | 48       |
+| mid1     | 02       |
+| mid2     | 03       |
 | mdt0     | 01       |
 | mdt1     | 09       |
 | mdt2     | 03       |

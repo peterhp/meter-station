@@ -42,4 +42,10 @@ uint16 crc16(uint16 crc, const uint8 *data, unsigned int len) {
 	return crc;
 }
 
+int crc16_check(uint16 crc_init, const uint8 *data, unsigned int len, 
+		const uint8 crc_code[2]) {
+	uint16 crc_calc = crc16(crc_init, data, len);
+	uint16 crc_real = (crc_code[1] << 8) + crc_code[0];
+	return (crc_real == crc_calc);
+}
 

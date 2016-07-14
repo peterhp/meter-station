@@ -7,8 +7,9 @@
 extern "C" {
 #endif
 
-#define FC_DIGIT	0x01
-#define FC_IMAGE	0x02
+#define FC_NONE		0x0
+#define FC_DIGIT	0x1
+#define FC_IMAGE	0x2
 
 typedef struct meter_station_context {
 	byte sid[4];	// station id
@@ -19,6 +20,7 @@ typedef struct meter_station_context {
 } ms_ctx;
 
 extern int modbus_pack(const ms_ctx *msc, byte *buf, int len);
+extern int modbus_unpack(ms_ctx *msc, const byte *data, int len);
 
 #ifdef __cplusplus
 }
