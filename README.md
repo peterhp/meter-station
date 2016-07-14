@@ -24,7 +24,7 @@ A meter station manages all meter monitors and uploads data to remote servers.
 | mid2     | 02       |
 | padd     | 03       |
 | crc0     | 85       |
-| crc1     | 5A       |
+| crc1     | 41       |
 ```
 
 * Reply message format
@@ -42,6 +42,6 @@ A meter station manages all meter monitors and uploads data to remote servers.
 | mdt1     | 09       |
 | mdt2     | 03       |
 | mdt3     | 05       |
-| crc0     | CE       |
-| crc1     | 14       |
+| crc0     | C8       |
+| crc1     | F0       |
 ```
