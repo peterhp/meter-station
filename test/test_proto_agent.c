@@ -3,8 +3,8 @@
 #include <string.h>
 #include <assert.h>
 
-#include "util.h"
-#include "proto_agent.h"
+#include "util/util.h"
+#include "proto/agent.h"
 
 static ms_ctx *gen_digit_ctx() {
 	byte sid[4] = {0x0, 0x0, 0x0, 0x1};

@@ -20,18 +20,16 @@ static int sig_init_callback() {
 	return 0;
 }
 
-extern void test_crc16();
-extern void test_pack_modbus();
-
 int main(int argc, char *argv[]) {
 	sig_init_callback();
 
-	printf("Start\n");
+	printf("Start!\n");
 
-	test_crc16();
-	test_pack_modbus();
+	while (!proc_stop) {
 
-	printf("End.\n");
+	}
+
+	printf("End!\n");
 
 	return 0;
 }

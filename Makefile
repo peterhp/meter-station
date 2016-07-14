@@ -1,19 +1,42 @@
 CC = gcc
-CFLAGS = -Wall -Wshadow -g
+CFLAGS = -I. -Wall -Wshadow -g
 LDFLAGS = -lpthread
 
-EXE = sm.out
+RDIRS = util proto com .
+RSRCS = $(foreach d, $(RDIRS), $(wildcard $(d)/*.c))
+ROBJS = $(patsubst %.c, %.o, $(RSRCS))
+REXE  = sm.out
 
-all : $(EXE)
+TDIR  = test
+TSRCS = $(filter-out %main.c, $(RSRCS)) $(wildcard $(TDIR)/*.c)
+TOBJS = $(patsubst %.c, %.o, $(TSRCS))
+TEXE  = unit.out
 
-Objects = $(patsubst %.c, %.o, $(wildcard *.c))
-$(EXE) : $(Objects)
-	$(CC) $(CFLAGS) $(Objects) -o $@ $(LDFLAGS)
+DIRS  = $(RDIRS) $(TDIR)
+SRCS  = $(foreach d, $(DIRS), $(wildcard $(d)/*.c))
+OBJS  = $(patsubst %.c, %.o, $(SRCS))
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
+.PHONY: all
+all : $(REXE) $(TEXE)
 
+$(REXE) : $(ROBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+$(TEXE) : $(TOBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+$(OBJS) : %.o : %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: test
+test :
+	@echo 'Files in main program:'
+	@echo 'Srcs: ' $(RSRCS)
+	@echo 'Objs: ' $(ROBJS)
+	@echo 'Files in test program:'
+	@echo 'Srcs: ' $(TSRCS)
+	@echo 'Objs: ' $(TOBJS)
+
+.PHONY: clean
 clean :
-	rm -f *.o $(EXE)
-
-.PHONY : all clean
+	rm -f $(OBJS) $(REXE) $(TEXE)

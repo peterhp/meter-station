@@ -2,7 +2,7 @@
 #include <string.h>
 #include <assert.h>
 
-#include "util.h"
+#include "util/util.h"
 
 void test_crc16() {
 	byte data1[] = {0x1, 0x3, 0x1, 0x48, 0x0, 0x2};

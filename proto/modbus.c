@@ -3,8 +3,8 @@
 #include <string.h>
 #include <assert.h>
 
-#include "util.h"
-#include "proto_agent.h"
+#include "util/util.h"
+#include "agent.h"
 
 int modbus_pack(const ms_ctx *msc, byte *buf, int len) {
 	int pktlen = 0;

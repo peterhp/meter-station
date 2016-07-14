@@ -1,7 +1,7 @@
 #ifndef _QPT_HEADER_WATERMETER_PROTOCOL_AGENT_H_
 #define _QPT_HEADER_WATERMETER_PROTOCOL_AGENT_H_
 
-#include "util.h"
+#include "util/util.h"
 
 #ifdef __cplusplus
 extern "C" {
