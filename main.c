@@ -20,14 +20,14 @@ static int sig_init_callback() {
 	return 0;
 }
 
+extern void test_crc16();
+
 int main(int argc, char *argv[]) {
 	sig_init_callback();
 
 	printf("Start\n");
 
-	while (!proc_stop) {
-
-	}
+	test_crc16();
 
 	printf("End.\n");
 
