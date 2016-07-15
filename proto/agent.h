@@ -7,6 +7,10 @@
 extern "C" {
 #endif
 
+#define PROTO_NONE		0x0
+#define PROTO_MODBUS	0x1
+#define PROTO_654		0x2
+
 #define FC_NONE		0x0
 #define FC_DIGIT	0x1
 #define FC_IMAGE	0x2
@@ -19,8 +23,10 @@ typedef struct meter_station_context {
 	int dlen;		// data length
 } ms_ctx;
 
-extern int modbus_pack(const ms_ctx *msc, byte *buf, int len);
-extern int modbus_unpack(ms_ctx *msc, const byte *data, int len);
+extern int agent_pack(const ms_ctx *msc, 
+		byte *buf, int buf_size, int proto);
+extern int agent_unpack(ms_ctx *msc, 
+		const byte *data, int dlen, int proto);
 
 #ifdef __cplusplus
 }

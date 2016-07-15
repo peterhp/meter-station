@@ -14,11 +14,11 @@ static int data_proc(void *data, int len) {
 	byte reply[64] = {0};
 	int rep_len = 0;
 
-	modbus_unpack(&msc, data, len);
+	agent_unpack(&msc, data, len, PROTO_MODBUS);
 
 	// prepare data
 	
-	rep_len = modbus_pack(&msc, reply, 64);
+	rep_len = agent_unpack(&msc, reply, 64, PROTO_MODBUS);
 
 	serial_write(&smtc.sctx, reply, rep_len);
 

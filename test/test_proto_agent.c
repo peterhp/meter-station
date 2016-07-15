@@ -39,7 +39,7 @@ void test_pack_modbus() {
 			0x1, 0x9, 0x3, 0x5, 0xC8, 0xF0};
 	ms_ctx *msc = gen_digit_ctx();
 
-	int plen = modbus_pack(msc, buf, 32);
+	int plen = agent_pack(msc, buf, 32, PROTO_MODBUS);
 	assert(sizeof(epct) == plen);
 	assert(!memcmp(epct, buf, sizeof(epct)));
 
@@ -55,11 +55,11 @@ void test_unpack_modbus() {
 
 	ms_ctx msc;
 
-	assert(!modbus_unpack(&msc, data_ok, sizeof(data_ok)));
+	assert(!agent_unpack(&msc, data_ok, sizeof(data_ok), PROTO_MODBUS));
 	assert(FC_DIGIT == msc.type);
 	assert(!memcmp(epct_sid, msc.sid, 4));
 	assert(!memcmp(epct_mid, msc.wmid, 6));
 
-	assert(modbus_unpack(&msc, data_err, sizeof(data_err)));
+	assert(agent_unpack(&msc, data_err, sizeof(data_err), PROTO_MODBUS));
 }
 
