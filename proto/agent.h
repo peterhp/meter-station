@@ -14,12 +14,13 @@ extern "C" {
 #define FC_NONE		0x0
 #define FC_DIGIT	0x1
 #define FC_IMAGE	0x2
+#define FC_OPTION	0x3
 
 typedef struct meter_station_context {
 	byte sid[4];	// station id
 	byte wmid[6];	// watermeter id
 	int type;		// data type (func code)
-	byte *data;		// data
+	byte data[1024];// data
 	int dlen;		// data length
 } ms_ctx;
 

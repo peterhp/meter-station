@@ -6,6 +6,7 @@
 
 #include "com/monitor.h"
 #include "proto/agent.h"
+#include "data/wm.h"
 
 static smt_ctx smtc;
 
@@ -17,8 +18,9 @@ static int data_proc(void *data, int len) {
 	agent_unpack(&msc, data, len, PROTO_MODBUS);
 
 	// prepare data
+	cmd_do(&msc);
 	
-	rep_len = agent_unpack(&msc, reply, 64, PROTO_MODBUS);
+	rep_len = agent_pack(&msc, reply, 64, PROTO_MODBUS);
 
 	serial_write(&smtc.sctx, reply, rep_len);
 

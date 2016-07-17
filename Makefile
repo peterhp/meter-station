@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -I. -Wall -Wshadow -g
 LDFLAGS = -lpthread
 
-RDIRS = util proto com .
+RDIRS = util proto data com .
 RSRCS = $(foreach d, $(RDIRS), $(wildcard $(d)/*.c))
 ROBJS = $(patsubst %.c, %.o, $(RSRCS))
 REXE  = sm.out

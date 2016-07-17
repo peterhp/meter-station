@@ -25,7 +25,6 @@ static int default_unpack(ms_ctx *msc, const byte *data, int len) {
 
 	if (len > 0) {
 		msc->dlen = len;
-		msc->data = (byte *)malloc(msc->dlen);
 		memcpy(msc->data, data, len);
 	}
 

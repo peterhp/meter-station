@@ -17,7 +17,6 @@ static ms_ctx *gen_digit_ctx() {
 	memcpy(msc->wmid, mid, 6);
 	msc->type = FC_DIGIT;
 	msc->dlen = 4;
-	msc->data = (byte *)malloc(sizeof(byte) * msc->dlen);
 	memcpy(msc->data, dgt, msc->dlen);
 
 	return msc;
@@ -25,9 +24,6 @@ static ms_ctx *gen_digit_ctx() {
 
 static void free_ms_ctx(ms_ctx **msc) {
 	if (msc && *msc) {
-		if ((*msc)->data) {
-			free((*msc)->data);
-		}
 		free(*msc);
 		*msc = NULL;
 	}
